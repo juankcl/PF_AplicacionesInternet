@@ -1,0 +1,7 @@
+{
+  "name": "eHelp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
