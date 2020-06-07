@@ -1,0 +1,68 @@
+html,
+body {
+	margin: 0;
+	height: 100%;
+}
+
+
+.main {
+	display: flex;
+	padding: 5em;
+	justify-content: center;
+	justify-self: center;
+	align-items: center;
+	height: 100%;
+}
+
+.tarjeta {
+	justify-self: center;
+	border-radius: 10px;
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	grid-gap: 1.5em;
+	width: 50%;
+	grid-auto-rows: minmax(50vh,auto);
+	background-color: #57616b;
+}
+
+.logo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: justify;
+	border-right: solid 1px white;
+}
+
+.texto {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.logo h1 {
+	display: flex;
+	text-align: center;
+}
+
+input {
+	margin: 0.2em;
+}
+
+@media (max-width:1132px) {
+	.main {
+		padding: 0.5em;
+	}
+	.login {
+		grid-template-columns: 1fr;
+		width: 90%;
+	}
+
+	.logo {
+		border-right: none;
+		border-bottom: solid 1px white;
+	}
+
+	.input {
+		width: 90%;
+	}
+}
