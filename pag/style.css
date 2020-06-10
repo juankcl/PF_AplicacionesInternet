@@ -4,7 +4,6 @@ body {
 	height: 100%;
 }
 
-
 .main {
 	display: flex;
 	padding: 5em;
@@ -21,7 +20,7 @@ body {
 	grid-template-columns: 2fr 3fr;
 	grid-gap: 1.5em;
 	width: 50%;
-	grid-auto-rows: minmax(50vh,auto);
+	grid-auto-rows: minmax(50vh, auto);
 	background-color: #57616b;
 }
 
@@ -48,7 +47,7 @@ input {
 	margin: 0.2em;
 }
 
-@media (max-width:1132px) {
+@media (max-width: 1132px) {
 	.main {
 		padding: 0.5em;
 	}
@@ -65,4 +64,11 @@ input {
 	.input {
 		width: 90%;
 	}
+}
+
+.fondo {
+	background-color: #57616b;
+}
+.cabeza {
+	background-color: rgb(37, 39, 58);
 }
