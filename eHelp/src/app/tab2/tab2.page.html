@@ -1,17 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Iniciar sesión
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div class="ion-padding main">
+  <ion-card>
+    <form #f="ngForm">
+      <ion-item>
+        <ion-label position="floating">Nombre de usuario:</ion-label>
+        <ion-input minlength="3" type="text" name="username" [(ngModel)]="inicioUser.username" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña:</ion-label>
+        <ion-input minlength="3" type="password" name="password" [(ngModel)]="inicioUser.password" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-button minlength="3" type="button" (click)="login(f)" color="primary"> Iniciar sesión </ion-button>
+      </ion-item>
+    </form>
+  </ion-card>
+  </div>
+
 </ion-content>
