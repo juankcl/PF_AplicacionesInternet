@@ -42,9 +42,11 @@ if ($_GET) {
         <?php if (!$_GET) : ?>
           <h2>Agregar Usuario</h2>
           <form method="POST" action="api/register.php">
-            <input type="text" class="form-control-mt-3" name="nombre"><input type="text" class="form-control-mt-3" name="user">
+            <input type="text" class="form-control-mt-3" name="nombre">
+            <input type="text" class="form-control-mt-3" name="username">
             <input type="text" class="form-control-mt-3" name="email">
             <input type="text" class="form-control-mt-3" name="password">
+            <input type="text" class="form-control-mt-3" name="password2">
             <button class="btn btn-primary mt-3">Agregar</button>
           </form>
         <?php endif ?>
