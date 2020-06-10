@@ -16,15 +16,14 @@ $sentencia_user->execute(array($usuario_login));
 $resultado = $sentencia_user->fetch();
 
 if (!$resultado) {
-    echo 'Nombre de usuario o contraseña incorrecta';
-    header('Location: ../index.php');
+    $errorMsg = 'Nombre de usuario o contraseña incorrecta';
 }
 
 if (password_verify($login_pass, $resultado['password'])) {
     $_SESSION['admin'] = $resultado['admin'];
     $_SESSION['userId'] = $resultado['id'];
     $_SESSION['username'] = $usuario_login;
-    header('Location: ../index.php');
+    header('Location: index.php');
 } else {
-    echo 'Nombre de usuario o contraseña incorrecta';
+    $errorMsg = 'Nombre de usuario o contraseña incorrecta';
 }

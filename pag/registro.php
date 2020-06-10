@@ -4,35 +4,8 @@ include_once 'api/conection.php';
 // Registrar un nuevo usuario
 if ($_POST && isset($_POST['username'], $_POST['email'], $_POST['password'], $_POST['password2'])) {
 
-	$usuario_new = $_POST['username'];
-	$email = $_POST['email'];
-	$pass_new = $_POST['password'];
-	$pass2_new = $_POST['password2'];
+	include_once('api/register.php');
 
-	// Verificar que no exista el usuario
-	$sql_user = 'Select * from usuarios where username=?';
-	$sentencia_user = $pdo->prepare($sql_user);
-	$sentencia_user->execute(array($usuario_new));
-	$resultado = $sentencia_user->fetch();
-
-	if ($resultado) {
-		$errorMsg = 'El usuario ya existe, por favor utilice un nombre de usuario diferente';
-	} else {
-		// Revisar que las dos contraseñas sean iguales
-		if ($pass2_new == $pass_new) {
-			$pass_new = password_hash($pass_new, PASSWORD_DEFAULT);
-			$sql_agregar_user = 'Insert into usuarios (username, email, password, admin) VALUES (?,?,?,0)';
-
-			$sentencia_agregar_user = $pdo->prepare($sql_agregar_user);
-			$sentencia_agregar_user->execute(array($usuario_new, $email, $pass_new));
-
-			$sentencia_agregar_user = null;
-			$pdo = null;
-			header('Location: index.php');
-		} else {
-			$errorMsg = "Las contraseñas no son iguales";
-		}
-	}
 }
 
 ?>
@@ -65,7 +38,7 @@ if ($_POST && isset($_POST['username'], $_POST['email'], $_POST['password'], $_P
 				</small>
 				<hr>
 				<h3 class="form-group">Registrarse</h3>
-				<form action="" method="post">
+				<form onsubmit="return validateForm()" action="" method="post" name="register">
 					<?PHP
 					if (isset($errorMsg) && $errorMsg) {
 						echo "<p style=\"color: red;\">*", htmlspecialchars($errorMsg), "</p>\n\n";
@@ -96,5 +69,17 @@ if ($_POST && isset($_POST['username'], $_POST['email'], $_POST['password'], $_P
 		</div>
 	</div>
 </body>
+
+<script>
+	function validateForm() {
+		var form = document.forms["register"];
+		for (let i = 0; i < form.length; i++) {
+			if (form[i].value == "" || form[i].value == null) {
+				alert("Por favor ingrese todos los datos");
+				return false;
+			}
+		}
+	}
+</script>
 
 </html>

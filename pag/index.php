@@ -1,31 +1,9 @@
 <?php
-include_once 'api/conection.php';
-
 session_start();
 
 if ($_POST && isset($_POST['username'], $_POST['password'])) {
 
-	$usuario_login = $_POST['username'];
-	$login_pass = $_POST['password'];
-
-	// Si el usuario no
-	$sql_user = 'Select * from usuarios where username=?';
-	$sentencia_user = $pdo->prepare($sql_user);
-	$sentencia_user->execute(array($usuario_login));
-	$resultado = $sentencia_user->fetch();
-
-	if (!$resultado) {
-		$errorMsg = 'Nombre de usuario o contraseña incorrecta';
-	}
-
-	if (password_verify($login_pass, $resultado['password'])) {
-		$_SESSION['admin'] = $resultado['admin'];
-		$_SESSION['userId'] = $resultado['id'];
-		$_SESSION['username'] = $usuario_login;
-		header('Location: index.php');
-	} else {
-		$errorMsg = 'Nombre de usuario o contraseña incorrecta';
-	}
+	include_once('api/login.php');
 } else {
 	// Verificar si hay una sesión de usuario
 	if (isset($_SESSION['admin'])) {
@@ -70,7 +48,7 @@ if ($_POST && isset($_POST['username'], $_POST['password'])) {
 					echo "<p style=\"color: red;\">*", htmlspecialchars($errorMsg), "</p>\n\n";
 				}
 				?>
-				<form action="" method="post">
+				<form onsubmit="return validateForm()" action="" method="post" name="login">
 					<div class="form-group">
 						Nombre de usuario:
 						<input type="text" name="username" id="" class="form-control" value="<?PHP if (isset($_POST['username'])) echo htmlspecialchars($_POST['username']); ?>">
@@ -81,9 +59,9 @@ if ($_POST && isset($_POST['username'], $_POST['password'])) {
 					</div>
 					<br>
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary">Iniciar sesión</button>
+						<input type="submit" class="btn btn-primary" value="Iniciar sesión">
 						<small class="form-text text-white">
-							¿No tienes cuenta? <a href="registro.html" class="text-info">Registrarse</a>
+							¿No tienes cuenta? <a href="registro.php" class="text-info">Registrarse</a>
 						</small>
 					</div>
 				</form>
@@ -93,5 +71,17 @@ if ($_POST && isset($_POST['username'], $_POST['password'])) {
 		</div>
 	</div>
 </body>
+
+<script>
+	function validateForm() {
+		var form = document.forms["login"];
+		for (let i = 0; i < form.length; i++) {
+			if (form[i].value == "" || form[i].value == null) {
+				alert("Por favor ingrese todos los datos");
+				return false;
+			}
+		}
+	}
+</script>
 
 </html>
