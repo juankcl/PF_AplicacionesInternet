@@ -4,7 +4,7 @@ session_start();
 
 include_once 'api/conection.php';
 
-$sql_user = 'Select * from lista';
+$sql_user = 'Select * from usuarios';
 $gsent = $pdo->prepare(sql_leer);
 $gsent->execute();
 $resultado = $gsent->fetchAll();
@@ -24,7 +24,7 @@ if( $_POST ){
 
 if($_GET){
   $Id=$_GET['Id'];
-  $sql_unico = 'Select * from lista where Id=?';
+  $sql_unico = 'Select * from usuarios where Id=?';
   $gsent_unico = $pdo->prepare($sql_unico);
   $gsent_unico->execute($Id);
   $resultado_unico= $gsent_unico->fetch();
