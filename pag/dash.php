@@ -39,6 +39,9 @@ if ($_GET) {
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-5">
+        <form action="api/logout.php" method="post">
+          <button type="submit">Cerrar sesión</button>
+        </form>
         <?php if (!$_GET) : ?>
           <h2>Agregar Usuario</h2>
           <form method="POST" action="api/register.php">
