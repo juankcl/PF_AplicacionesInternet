@@ -2,7 +2,7 @@
 // Login
 session_start();
 
-include_once 'conection.php';
+include_once 'api/conection.php';
 
 $sql_user = 'Select * from lista';
 $gsent = $pdo->prepare(sql_leer);

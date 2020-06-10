@@ -1,4 +1,5 @@
 <?php
+    include_once 'api/conection.php';
 //editar.php?Id=
 //mandar llamar
     $Id= $_GET['Id'];
@@ -15,5 +16,5 @@
 
     $pdo = null;
     $sentencia_editar = null;
-    
+
     header('location: index.php');
