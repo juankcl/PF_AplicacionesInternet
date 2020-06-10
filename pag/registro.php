@@ -45,6 +45,10 @@ if ($_POST && isset($_POST['username'], $_POST['email'], $_POST['password'], $_P
 					}
 					?>
 					<div class="form-group">
+						Nombre:
+						<input minlength="3" type="text" name="nombre" id="" class="form-control" value="<?PHP if (isset($_POST['nombre'])) echo htmlspecialchars($_POST['nombre']); ?>">
+					</div>
+					<div class="form-group">
 						Nombre de usuario:
 						<input minlength="3" type="text" name="username" id="" class="form-control" value="<?PHP if (isset($_POST['username'])) echo htmlspecialchars($_POST['username']); ?>">
 					</div>
