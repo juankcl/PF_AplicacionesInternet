@@ -1,20 +1,22 @@
 <?php
-
 session_start();
 
-// Verificar si hay una sesión de usuario
+if ($_POST && isset($_POST['username'], $_POST['password'])) {
 
-if (isset($_SESSION['admin'])) {
-	if ($_SESSION['admin'] == 1) {
-		header('Location: crud.php');
-		die();
+	include_once('api/login.php');
+} else {
+	// Verificar si hay una sesión de usuario
+	if (isset($_SESSION['admin'])) {
+		if ($_SESSION['admin'] == 1) {
+			header('Location: dash.php');
+			die();
+		}
+	}
+	if (isset($_SESSION['userId'])) {
+		echo $_SESSION['admin'];
+		header('Location: boton.php');
 	}
 }
-if (isset($_SESSION['userId'])) {
-	echo $_SESSION['admin'];
-	header('Location: ./boton.php');
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -35,26 +37,32 @@ if (isset($_SESSION['userId'])) {
 				<h1>eHelp</h1>
 				<hr>
 				<p>
-					eHelp es una aplicación de botón de emergencia, al presionar el botón la ubicación del usuario será mandada a nuestros
+					eHelp es una aplicación de botón de emergencia, al presionar el botón la ubicación del usuario será
+					mandada a nuestros
 					servidores, contactando las autoridades locales que eliga.
 				</p>
 			</div>
 			<div class="texto text-light">
 				<h3 class="form-group">Iniciar Sesión</h3>
-				<form action="api/login.php" method="post">
+				<?PHP
+				if (isset($errorMsg) && $errorMsg) {
+					echo "<p style=\"color: red;\">*", htmlspecialchars($errorMsg), "</p>\n\n";
+				}
+				?>
+				<form onsubmit="return validateForm()" action="" method="post" name="login">
 					<div class="form-group">
 						Nombre de usuario:
-						<input type="text" name="username" id="" class="form-control">
+						<input type="text" name="username" id="" class="form-control" value="<?PHP if (isset($_POST['username'])) echo htmlspecialchars($_POST['username']); ?>">
 					</div>
 					<div class="form-group">
 						Contraseña:
-						<input type="password" name="password" id="" class="form-control">
+						<input type="password" name="password" id="" class="form-control" value="<?PHP if (isset($_POST['password'])) echo htmlspecialchars($_POST['password']); ?>">
 					</div>
 					<br>
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary">Iniciar sesión</button>
+						<input type="submit" class="btn btn-primary" value="Iniciar sesión">
 						<small class="form-text text-white">
-							¿No tienes cuenta? <a href="registro.html" class="text-info">Registrarse</a>
+							¿No tienes cuenta? <a href="registro.php" class="text-info">Registrarse</a>
 						</small>
 					</div>
 				</form>
@@ -64,5 +72,17 @@ if (isset($_SESSION['userId'])) {
 		</div>
 	</div>
 </body>
+
+<script>
+	function validateForm() {
+		var form = document.forms["login"];
+		for (let i = 0; i < form.length; i++) {
+			if (form[i].value == "" || form[i].value == null) {
+				alert("Por favor ingrese todos los datos");
+				return false;
+			}
+		}
+	}
+</script>
 
 </html>
