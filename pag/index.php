@@ -37,7 +37,8 @@ if ($_POST && isset($_POST['username'], $_POST['password'])) {
 				<h1>eHelp</h1>
 				<hr>
 				<p>
-					eHelp es una aplicación de botón de emergencia, al presionar el botón la ubicación del usuario será mandada a nuestros
+					eHelp es una aplicación de botón de emergencia, al presionar el botón la ubicación del usuario será
+					mandada a nuestros
 					servidores, contactando las autoridades locales que eliga.
 				</p>
 			</div>
