@@ -1,20 +1,44 @@
 <?php
+include_once 'api/conection.php';
 
 session_start();
 
-// Verificar si hay una sesión de usuario
+if ($_POST && isset($_POST['username'], $_POST['password'])) {
 
-if (isset($_SESSION['admin'])) {
-	if ($_SESSION['admin'] == 1) {
-		header('Location: crud.php');
-		die();
+	$usuario_login = $_POST['username'];
+	$login_pass = $_POST['password'];
+
+	// Si el usuario no
+	$sql_user = 'Select * from usuarios where username=?';
+	$sentencia_user = $pdo->prepare($sql_user);
+	$sentencia_user->execute(array($usuario_login));
+	$resultado = $sentencia_user->fetch();
+
+	if (!$resultado) {
+		$errorMsg = 'Nombre de usuario o contraseña incorrecta';
+	}
+
+	if (password_verify($login_pass, $resultado['password'])) {
+		$_SESSION['admin'] = $resultado['admin'];
+		$_SESSION['userId'] = $resultado['id'];
+		$_SESSION['username'] = $usuario_login;
+		header('Location: index.php');
+	} else {
+		$errorMsg = 'Nombre de usuario o contraseña incorrecta';
+	}
+} else {
+	// Verificar si hay una sesión de usuario
+	if (isset($_SESSION['admin'])) {
+		if ($_SESSION['admin'] == 1) {
+			header('Location: crud.php');
+			die();
+		}
+	}
+	if (isset($_SESSION['userId'])) {
+		echo $_SESSION['admin'];
+		header('Location: ./boton.php');
 	}
 }
-if (isset($_SESSION['userId'])) {
-	echo $_SESSION['admin'];
-	header('Location: ./boton.php');
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -41,14 +65,19 @@ if (isset($_SESSION['userId'])) {
 			</div>
 			<div class="texto text-light">
 				<h3 class="form-group">Iniciar Sesión</h3>
-				<form action="api/login.php" method="post">
+				<?PHP
+				if (isset($errorMsg) && $errorMsg) {
+					echo "<p style=\"color: red;\">*", htmlspecialchars($errorMsg), "</p>\n\n";
+				}
+				?>
+				<form action="" method="post">
 					<div class="form-group">
 						Nombre de usuario:
-						<input type="text" name="username" id="" class="form-control">
+						<input type="text" name="username" id="" class="form-control" value="<?PHP if (isset($_POST['username'])) echo htmlspecialchars($_POST['username']); ?>">
 					</div>
 					<div class="form-group">
 						Contraseña:
-						<input type="password" name="password" id="" class="form-control">
+						<input type="password" name="password" id="" class="form-control" value="<?PHP if (isset($_POST['password'])) echo htmlspecialchars($_POST['password']); ?>">
 					</div>
 					<br>
 					<div class="form-group">
