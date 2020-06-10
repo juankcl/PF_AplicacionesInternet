@@ -22,7 +22,7 @@ if ($resultado) {
 } else {
     // Revisar que las dos contraseñas sean iguales
     if (password_verify($pass2_new, $pass_new)) {
-        $sql_agregar_user = 'Insert into usuarios (username, email, password, admin) VALUES (?,?,?,1)';
+        $sql_agregar_user = 'Insert into usuarios (username, email, password, admin) VALUES (?,?,?,0)';
 
         $sentencia_agregar_user = $pdo->prepare($sql_agregar_user);
         $sentencia_agregar_user->execute(array($usuario_new, $email, $pass_new));
