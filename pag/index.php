@@ -6,7 +6,7 @@ session_start();
 
 if (isset($_SESSION['admin'])) {
 	if ($_SESSION['admin'] == 1) {
-		header('Location: crud.php');
+		header('Location: dash.php');
 		die();
 	}
 }
