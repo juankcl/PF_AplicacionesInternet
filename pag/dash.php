@@ -38,7 +38,7 @@ if ($_GET) {
   <h1 style="text-align:center,">Dashboard de Usuarios</h1>
   <div class="container mt-5">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-5">
         <?php if (!$_GET) : ?>
           <h2>Agregar Usuario</h2>
           <form method="POST" action="api/register.php">
@@ -60,7 +60,7 @@ if ($_GET) {
           </form>
         <?php endif ?>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-7">
         <?php foreach ($resultado as $dato) : ?>
           <div class="alert alert-danger">
             <?php echo $dato['id'] ?>
@@ -70,13 +70,18 @@ if ($_GET) {
             <?php echo $dato['username'] ?>
             -
             <?php echo $dato['email'] ?>
-            <a href="eliminar.php?Id=<?php echo $dato['id'] ?>" class="float-right">
-              <i class="fas fa-trash"></i>
-            </a>
-
-            <a href="dash.php?id=<?php echo $dato['id'] ?>" class="float-right ml-3">
-              <i class="fas fa-edit"></i>
-            </a>
+            <form action="api/eliminar.php" method="POST" class="float-right">
+              <button type="submit" class="btn btn-link">
+                <i class="fas fa-trash"></i>
+              </button>
+              <input type="hidden" name="id" value="<?php echo $dato['id'] ?>">
+            </form>
+            <form action="" method="GET" class="float-right ml-3">
+              <button type="submit" class="btn btn-link">
+                <i class="fas fa-edit"></i>
+              </button>
+              <input type="hidden" name="id" value="<?php echo $dato['id'] ?>">
+            </form>
           </div>
         <?php endforeach ?>
       </div>
