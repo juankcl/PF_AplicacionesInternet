@@ -6,6 +6,7 @@ body {
 
 .main {
 	display: flex;
+	flex-flow: column;
 	padding: 5em;
 	justify-content: center;
 	justify-self: center;
