@@ -55,7 +55,7 @@ if ($_GET) {
             <input type="text" class="form-control-mt-3" name="nombre" value="<?php echo $resultado_unico['nombre'] ?>">
             <input type="text" class="form-control-mt-3" name="username" value="<?php echo $resultado_unico['username'] ?>">
             <input type="text" class="form-control-mt-3" name="email" value="<?php echo $resultado_unico['email'] ?>">
-            <input type="hidden" name="Id" value="<?php echo $resultado_unico['id'] ?>">
+            <input type="hidden" name="id" value="<?php echo $resultado_unico['id'] ?>">
             <button class="btn btn-danger mt-3">Editar</button>
           </form>
         <?php endif ?>
