@@ -8,13 +8,13 @@ if ($_POST && isset($_POST['username'], $_POST['password'])) {
 	// Verificar si hay una sesión de usuario
 	if (isset($_SESSION['admin'])) {
 		if ($_SESSION['admin'] == 1) {
-			header('Location: crud.php');
+			header('Location: dash.php');
 			die();
 		}
 	}
 	if (isset($_SESSION['userId'])) {
 		echo $_SESSION['admin'];
-		header('Location: ./boton.php');
+		header('Location: boton.php');
 	}
 }
 ?>
