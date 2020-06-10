@@ -1,6 +1,6 @@
 <?php
 
-$link = 'mysql:host=localhost; dbname=ehelp';
+$link = 'mysql:host=localhost; dbname=lista';
 $usuario = 'root';
 $pass = 'root';
 

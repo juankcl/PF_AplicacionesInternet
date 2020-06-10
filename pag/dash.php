@@ -29,7 +29,7 @@ $resultado = $gsent->fetchAll();
   <body>
    <div class="container mt-5">
        <div class="row">
-           <div class="col -md-6">
+           <div class="col-md-6">
                 <?php foreach($resultado as $dato): ?>
                     <div class="alert alert-danger" >
                         <?php echo $dato['Id']?>  
@@ -39,8 +39,19 @@ $resultado = $gsent->fetchAll();
                         <?php echo $dato['user']?>
                         -
                         <?php echo $dato['correo']?>
+                        -
+                        <?php echo $dato['pass']?>
                     </div>
                 <?php endforeach ?>
+              <div class="col-md-6">
+                  <h2>Agregar Usuario</h2>
+                  <form method="POST">
+                      <input type="text" class= "form-control-mt-3"name="nombre"><input type="text" class= "form-control-mt-3"name="user">
+                      <input type="text" class= "form-control-mt-3"name="correo">
+                      <input type="text" class= "form-control-mt-3"name="pass">
+                      <button class="btn btn-primary mt-3">Agregar</button>
+                  </form>
+              </div>
            </div>
        </div>
    </div>
