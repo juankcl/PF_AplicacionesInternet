@@ -4,18 +4,18 @@ session_start();
 
 include_once 'api/conection.php';
 
-$sql_user = 'Select * from usuarios';
+$sql_user = 'Select * from usuarios where activo=1';
 $gsent = $pdo->prepare($sql_user);
 $gsent->execute();
 $resultado = $gsent->fetchAll(\PDO::FETCH_ASSOC);
 
 if ($_GET) {
-  $Id = $_GET['id'];
   $sql_unico = 'Select * from usuarios where id=?';
   $gsent_unico = $pdo->prepare($sql_unico);
-  $gsent_unico->execute($Id);
+  $gsent_unico->execute(array($_GET['id']));
   $resultado_unico = $gsent_unico->fetch();
 }
+
 ?>
 
 <!doctype html>
@@ -53,7 +53,7 @@ if ($_GET) {
           <h2>Editar Usuario</h2>
           <form method="POST" action="api/actualizar.php">
             <input type="text" class="form-control-mt-3" name="nombre" value="<?php echo $resultado_unico['nombre'] ?>">
-            <input type="text" class="form-control-mt-3" name="user" value="<?php echo $resultado_unico['username'] ?>">
+            <input type="text" class="form-control-mt-3" name="username" value="<?php echo $resultado_unico['username'] ?>">
             <input type="text" class="form-control-mt-3" name="email" value="<?php echo $resultado_unico['email'] ?>">
             <input type="hidden" name="Id" value="<?php echo $resultado_unico['id'] ?>">
             <button class="btn btn-danger mt-3">Editar</button>
@@ -74,7 +74,7 @@ if ($_GET) {
               <i class="fas fa-trash"></i>
             </a>
 
-            <a href="index.php?Id=<?php echo $dato['id'] ?>" class="float-right ml-3">
+            <a href="dash.php?id=<?php echo $dato['id'] ?>" class="float-right ml-3">
               <i class="fas fa-edit"></i>
             </a>
           </div>
