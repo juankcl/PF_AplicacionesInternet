@@ -41,9 +41,6 @@ if ($_GET) {
       <h2 style="text-align:center,font">Dashboard de Usuarios</h2>
     </div>
     <div class="col">
-      2 of 3
-    </div>
-    <div class="col">
       <form action="api/logout.php" method="post" style="padding-right: 10px;">
         <button style="float:inline-end; " class="btn btn-primary type=" submit">Cerrar
           sesión</button>
