@@ -22,9 +22,7 @@ export class Tab1Page {
       {
         this.storageService.presentToast("Necesitas iniciar sesión para poder utilizar el botón", "danger");
       } else {
-        this.botonSQL.mandarAlerta().subscribe((response:Message) => {
-          console.log(response)
-        });
+        this.botonSQL.mandarAlerta2();
       }
   }
 

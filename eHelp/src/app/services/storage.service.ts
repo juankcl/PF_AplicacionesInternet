@@ -42,7 +42,7 @@ export class StorageService {
 
   getCurrentUser(): User {
     var session: Session = this.getCurrentSession();
-    return (session && session.user) ? session.user : null;
+    return (session.user) ? session.user : null;
   };
 
   isAuthenticated(): boolean {
@@ -67,16 +67,6 @@ export class StorageService {
       duration: 2000
     });
     toast.present();
-  }
-
-  makePos(lat:any, lon:any) {
-    let position = {
-      latitude: lat,
-      longitude: lon,
-      userId: this.getCurrentUser().id
-    };
-    
-    return position;
   }
 
 }

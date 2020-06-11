@@ -14,7 +14,7 @@ export class MySQLService {
 
   constructor(
     public httpClient: HttpClient,
-    private storage:StorageService
+    private storage: StorageService
   ) { }
 
   login(user: User): Observable<Session> {
@@ -24,19 +24,19 @@ export class MySQLService {
   registro(new_user: User): Observable<Message> {
     return this.httpClient.post<Message>(`${this.PHP_API_SERVER}/ion-register.php`, new_user);
   }
-  
+
   mandarAlerta(): Observable<Message> {
-    return this.httpClient.post<Message>(`${this.PHP_API_SERVER}/ion-alerta.php`, { latitud: 21.109145599999998, longitud: -101.6692736, userId: "1" });
+    return this.httpClient.post<Message>(`${this.PHP_API_SERVER}/ion-alerta.php`, { latitud: 21.109145599999998, longitud: -101.6692736, id: "14" });
   }
 
   latitude: any;
   longitude: any;
 
-  
-  alerta: Alerta = {userid: null, latitud: null, longitud: null};
+
+  alerta: Alerta = { userid: null, latitud: null, longitud: null };
 
   mandarAlerta2() {
-    
+
     if (navigator.geolocation) {
       let user = this.storage.getCurrentUser();
 
@@ -62,26 +62,26 @@ export class MySQLService {
   }
 
   foundLoc(pos, self) {
-    console.log(pos);
-    
-    console.log(self.storage.getCurrentUser());
-
-    var alerta = { latitud: pos.coords.latitude, longitud: pos.coords.longitude, userId: self.storage.getCurrentUser().userId };
-
-    console.log(alerta);
-    self.cosa(alerta);
+    var alerta = { 
+      latitud: pos.coords.latitude, 
+      longitud: pos.coords.longitude, 
+      id: self.storage.getCurrentUser().id
+    };
+    self.cosa(alerta).subscribe((response: any) => {
+      self.storage.presentToast(response.message, response.type);
+    });
   }
 
-  cosa(alerta: any) {
+  cosa(alerta: any): Observable<Message> {
     console.log("Cosa");
     console.log(alerta);
 
     console.log(this.PHP_API_SERVER);
-    this.httpClient.post(`${this.PHP_API_SERVER}/ion-alerta.php`, alerta);
+    return this.httpClient.post<Message>(`${this.PHP_API_SERVER}/ion-alerta.php`, alerta);
   }
 
-  error(err){
-    console.log("Error inesperado("+ err.code + "): " + err.message,"danger");
+  error(err) {
+    console.log("Error inesperado(" + err.code + "): " + err.message, "danger");
   }
 
 }
