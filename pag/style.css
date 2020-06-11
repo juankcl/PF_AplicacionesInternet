@@ -1,0 +1,126 @@
+:root
+{
+	--Tamanio-Boton-Panico: 120px;
+}
+
+html,
+body {
+	margin: 0;
+	height: 100%;
+}
+
+.main {
+	display: flex;
+	flex-flow: column;
+	padding: 5em;
+	justify-content: center;
+	justify-self: center;
+	align-items: center;
+	height: 100%;
+}
+.main2 {
+	display: flex;
+	flex-flow: column;
+	padding: 5em;
+	justify-content: center;
+	justify-self: center;
+	align-items: center;
+}
+
+.tarjeta {
+	justify-self: center;
+	border-radius: 10px;
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	grid-gap: 1.5em;
+	width: 50%;
+	grid-auto-rows: minmax(50vh, auto);
+	background-color: #57616b;
+}
+
+.tarjeta2 {
+	justify-self: center;
+	border-radius: 10px;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 1.5em;
+	width: 50%;
+	grid-auto-rows: minmax(10vh, auto);
+	background-color: #57616b;
+}
+
+.mapa {
+	min-height: 500px;
+}
+
+.ContenedorBoton
+{
+	align-items: center;
+	display: flex;
+	height: var(--Tamanio-Boton-Panico);
+	justify-content: center;
+	width: 100%;
+}
+
+.botonH {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	font-size: 24px;
+	font-weight: bold;
+	color: white;
+	background-color: red;
+	height: var(--Tamanio-Boton-Panico);
+	width: var(--Tamanio-Boton-Panico);
+	position: relative;
+	border-radius: 100%;
+}
+
+.logo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: justify;
+	border-right: solid 1px white;
+}
+
+.texto {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.logo h1 {
+	display: flex;
+	text-align: center;
+}
+
+input {
+	margin: 0.2em;
+}
+
+@media (max-width: 1132px) {
+	.main {
+		padding: 0.5em;
+	}
+	.login {
+		grid-template-columns: 1fr;
+		width: 90%;
+	}
+
+	.logo {
+		border-right: none;
+		border-bottom: solid 1px white;
+	}
+
+	.input {
+		width: 90%;
+	}
+}
+
+.fondo {
+	background-color: #57616b;
+}
+.cabeza {
+	background-color: rgb(37, 39, 58);
+}

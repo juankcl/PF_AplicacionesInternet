@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+	<title>eHelp | Iniciar sesión</title>
+</head>
+
+<body class="bg-dark">
+	<div class="main">
+		<div class="tarjeta2 p-4 ">
+			<p class="text-light">
+				<strong>¿Estás seguro que quieres eliminar tu cuenta? Esta acción es irreversible</strong>
+			</p>
+			<div class="form-group col" >
+				<div class="row">
+					<form action="api/eliminar_cuenta.php">
+						<input type="submit" class="btn btn-danger" value="Aceptar">
+					</form>
+					</div>
+					<div class="row">
+						<a href="index.php" class="btn btn-primary">Cancelar</a>
+					</div>
+			</div>
+		</div>
+	</div>
+</body>

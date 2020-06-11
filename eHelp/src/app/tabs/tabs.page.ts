@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +8,17 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  constructor(private storageSer: StorageService) {}
+
+  tab:string="tab2";
+
+  onClick() {
+    console.log(this.storageSer.getCurrentUser());
+    if (this.storageSer.getCurrentUser() == null) {
+      this.tab = "tab2";
+    } else {
+      this.tab = "tab3";
+    }
+  }
 
 }
