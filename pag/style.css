@@ -1,3 +1,8 @@
+:root
+{
+	--Tamanio-Boton-Panico: 120px;
+}
+
 html,
 body {
 	margin: 0;
@@ -48,11 +53,25 @@ body {
 	min-height: 500px;
 }
 
+.ContenedorBoton
+{
+	align-items: center;
+	display: flex;
+	height: var(--Tamanio-Boton-Panico);
+	justify-content: center;
+	width: 100%;
+}
+
 .botonH {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	font-size: 24px;
+	font-weight: bold;
 	color: white;
 	background-color: red;
-	height: 60px;
-	width: 60px;
+	height: var(--Tamanio-Boton-Panico);
+	width: var(--Tamanio-Boton-Panico);
 	position: relative;
 	border-radius: 100%;
 }

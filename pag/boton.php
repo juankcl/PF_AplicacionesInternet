@@ -44,7 +44,9 @@ include_once 'api/get_alertas.php';
 			<div id="mapa" class="row mapa">
 				<div id="mapa"></div>
 			</div>
-			<input type="submit" id="ObtUbicacion" value="HELP" class="row botonH">
+			<div class="ContenedorBoton">
+				<input type="submit" id="ObtUbicacion" value="HELP" class="row botonH">
+			</div>
 			<div class="row">
 				<form action="api/logout.php" method="post col">
 					<button type="submit" class="btn btn-primary">Cerrar sesión</button>
