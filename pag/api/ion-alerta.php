@@ -9,16 +9,15 @@ if (isset($postdata) && !empty($postdata)) {
 	$request = json_decode($postdata);
 
 	// Sanitize.
-	$userId = mysqli_real_escape_string($con, trim($request->userId));
-	$latitud = mysqli_real_escape_string($con, trim($request->latitud));
-	$longitud = mysqli_real_escape_string($con, trim($request->longitud));
+	$userId = mysqli_real_escape_string($con, (float)$request->userId);
+	$latitud = mysqli_real_escape_string($con, (float)$request->latitud);
+	$longitud = mysqli_real_escape_string($con, (float)$request->longitud);
 	
 	// Create.
-	$sql = "INSERT INTO `alertas`(`id`,`userId`,`fecha`,`latitud`,`longitud`) 
-	VALUES (NULL,'{$userId}',NOW(),'{$latitud}','{$longitud}')";
+	$sql = "INSERT INTO `alertas`(`id`,`userId`,`fecha`,`latitud`,`longitud`) VALUES (NULL,{$userId},NOW(),{$latitud},{$longitud})";
 
+	echo $sql;
 	if (mysqli_query($con, $sql)) {
-		echo $userId;
 		http_response_code(201);
 		$message = [
 			'message' => 'Se ha realizado exitosamente la alerta',

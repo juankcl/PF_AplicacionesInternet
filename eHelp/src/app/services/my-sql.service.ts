@@ -24,6 +24,10 @@ export class MySQLService {
   registro(new_user: User): Observable<Message> {
     return this.httpClient.post<Message>(`${this.PHP_API_SERVER}/ion-register.php`, new_user);
   }
+  
+  mandarAlerta(): Observable<Message> {
+    return this.httpClient.post<Message>(`${this.PHP_API_SERVER}/ion-alerta.php`, { latitud: 21.109145599999998, longitud: -101.6692736, userId: "1" });
+  }
 
   latitude: any;
   longitude: any;
@@ -31,7 +35,8 @@ export class MySQLService {
   
   alerta: Alerta = {userid: null, latitud: null, longitud: null};
 
-  mandarAlerta() {
+  mandarAlerta2() {
+    
     if (navigator.geolocation) {
       let user = this.storage.getCurrentUser();
 
