@@ -10,7 +10,7 @@ $gsent->execute();
 $resultado = $gsent->fetchAll(\PDO::FETCH_ASSOC);
 
 if ($_GET) {
-  $sql_unico = 'Select * from usuarios where id=?';
+  $sql_unico = 'Select * from usuarios where id=? bottom 8';
   $gsent_unico = $pdo->prepare($sql_unico);
   $gsent_unico->execute(array($_GET['id']));
   $resultado_unico = $gsent_unico->fetch();

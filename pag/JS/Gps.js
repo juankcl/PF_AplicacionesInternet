@@ -55,22 +55,3 @@ function Mapa() {
         );
     }
 }
-
-function Mapa2(id, lat, lon) {
-    //Si el navegador soporta geolocalizacion
-
-    var coord ={
-        lat: lat,
-        lng: lon
-    }
-
-    var Map = new google.maps.Map(document.getElementById(id), {
-        zoom: 10,
-        center: coords
-    });
-
-    var Marker = new google.maps.Marker({
-        position: coords,
-        map: Map
-    });
-}
