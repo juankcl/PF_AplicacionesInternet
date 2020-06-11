@@ -42,6 +42,9 @@ export class StorageService {
 
   getCurrentUser(): User {
     var session: Session = this.getCurrentSession();
+    if (session == null) {
+      return null;
+    }
     return (session.user) ? session.user : null;
   };
 
