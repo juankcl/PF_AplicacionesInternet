@@ -53,6 +53,7 @@ export class StorageService {
   logout(): void {
     this.removeCurrentSession();
     this.router.navigateByUrl('/');
+    this.presentToast("Cerrando sesión","danger");
   }
 
   async presentToast(text: string, color: string = "primary") {
