@@ -17,7 +17,7 @@ export class Tab1Page {
   ) {}
 
   onClick() {
-      console.log(this.storageService.isAuthenticated());
+      //console.log(this.storageService.isAuthenticated());
       if(!this.storageService.isAuthenticated())
       {
         this.storageService.presentToast("Necesitas iniciar sesión para poder utilizar el botón", "danger");

@@ -13,7 +13,7 @@ export class TabsPage {
   tab:string="tab2";
 
   onClick() {
-    console.log(this.storageSer.getCurrentUser());
+    //console.log(this.storageSer.getCurrentUser());
     if (this.storageSer.getCurrentUser() == null) {
       this.tab = "tab2";
     } else {

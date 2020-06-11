@@ -54,7 +54,7 @@ export class MySQLService {
         self.foundLoc(position, self);
       }, this.error, options);
 
-      console.log(this.latitude);
+      //console.log(this.latitude);
       return;
     } else {
       this.storage.presentToast("ERROR", "danger");
@@ -73,10 +73,10 @@ export class MySQLService {
   }
 
   cosa(alerta: any): Observable<Message> {
-    console.log("Cosa");
-    console.log(alerta);
+    //console.log("Cosa");
+    //console.log(alerta);
 
-    console.log(this.PHP_API_SERVER);
+    //console.log(this.PHP_API_SERVER);
     return this.httpClient.post<Message>(`${this.PHP_API_SERVER}/ion-alerta.php`, alerta);
   }
 

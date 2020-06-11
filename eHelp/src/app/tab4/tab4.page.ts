@@ -29,7 +29,7 @@ export class Tab4Page implements OnInit {
   register(form: NgForm) {
     if(form.valid){
       if (form.value['password'] == form.value['password2']) {
-        console.log(form.value);
+        //console.log(form.value);
         this.registerSQL.registro(form.value).subscribe((response: Message) => {
           this.storage.presentToast(response.message, response.type);
           if (response.type == "success") {

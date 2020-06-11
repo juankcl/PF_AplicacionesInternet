@@ -22,16 +22,16 @@ export class Tab2Page {
 
   login(form: NgForm) {
     if (form.valid) {
-      //console.log(form.value);
+      ////console.log(form.value);
       this.registerSQL.login(form.value).subscribe((response: Session) => {
-        console.log(response);
+        //console.log(response);
         if (response.valid == true) {
           this.storageService.presentToast("Sesión iniciada correctamente", "success");
           if (response.admin == true) {
             this.storageService.presentToast("Hola admin...", "success");
           }
           this.storageService.setCurrentSession(response);
-          console.log(this.storageService.getCurrentUser());
+          //console.log(this.storageService.getCurrentUser());
           form.resetForm();
         } else {
           this.storageService.presentToast("Usuario o contraseña incorrecta", "danger");

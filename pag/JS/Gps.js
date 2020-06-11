@@ -12,7 +12,7 @@ function Ubicacion() {
         navigator.geolocation.getCurrentPosition(
             //Si el navegador entrega los datos de geolocalizacion los imprimimos
             function (position) {
-                console.log(position.coords);
+                //console.log(position.coords);
                 var form = document.forms["ubicacion"];
                 form['lat'].value = position.coords.latitude;
                 form['long'].value = position.coords.longitude;

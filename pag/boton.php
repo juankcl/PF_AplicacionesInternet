@@ -66,7 +66,7 @@ include_once 'api/get_alertas.php';
 			<script>
 				function Mapa2(id, lat, lon) {
 					//Si el navegador soporta geolocalizacion
-					console.log(id);
+					//console.log(id);
 					var coord = {
 						lat: lat,
 						lng: lon
