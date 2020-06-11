@@ -10,7 +10,7 @@ $gsent->execute();
 $resultado = $gsent->fetchAll(\PDO::FETCH_ASSOC);
 
 if ($_GET) {
-  $sql_unico = 'Select * from usuarios where id=? bottom 8';
+  $sql_unico = 'Select * from usuarios where id=?';
   $gsent_unico = $pdo->prepare($sql_unico);
   $gsent_unico->execute(array($_GET['id']));
   $resultado_unico = $gsent_unico->fetch();
@@ -105,6 +105,14 @@ if ($_GET) {
             <div>
               <label>Direccion de Correo</label>
               <input name="email" class="form-control" placeholder="Ingresa correo" value="<?php echo $resultado_unico['email'] ?>">
+            </div>
+            <div>
+              <label>Password</label>
+              <input type="password" name="password" class="form-control" placeholder="Ingresa correo" value="">
+            </div>
+            <div>
+              <label>Admin</label>
+              <input type="checkbox" name="admin" class="form-control" placeholder="" value="" <?php if($resultado_unico['admin'] == true) {echo "checked";}?>>
             </div>
             <input type="hidden" name="id" value="<?php echo $resultado_unico['id'] ?>"> <br>
             <button type="submit" class="btn btn-danger">Editar</button>
