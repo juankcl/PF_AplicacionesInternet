@@ -22,7 +22,7 @@ if (isset($postdata) && !empty($postdata)) {
 		if (password_verify($pass, $datos['password'])) {
 			http_response_code(201);
 			$user = [
-				'userId' => $datos['id'],
+				'id' => $datos['id'],
 				'username' => $datos['username'],
 				'nombre' => $datos['nombre'],
 				'password' => null

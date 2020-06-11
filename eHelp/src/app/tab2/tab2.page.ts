@@ -13,7 +13,7 @@ import { StorageService } from '../services/storage.service';
 })
 export class Tab2Page {
 
-  inicioUser: User = { userId: null, username: null, password: null, email: null, nombre: null };
+  inicioUser: User = { id: null, username: null, password: null, email: null, nombre: null };
 
   constructor(
     private registerSQL: MySQLService,
@@ -31,6 +31,7 @@ export class Tab2Page {
             this.storageService.presentToast("Hola admin...", "success");
           }
           this.storageService.setCurrentSession(response);
+          form.resetForm();
         } else {
           this.storageService.presentToast("Usuario o contraseña incorrecta", "danger");
         }

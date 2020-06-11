@@ -1,5 +1,5 @@
 export class User {
-	userId: number;
+	id: number;
 	nombre: string;
 	username: string;
 	email: string;
@@ -10,4 +10,9 @@ export class Session {
 	valid: boolean;
 	user: User;
 	admin: boolean;
+}
+
+export class Message {
+	message: string;
+	type: string;
 }
