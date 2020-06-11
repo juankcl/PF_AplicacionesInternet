@@ -16,3 +16,10 @@ export class Message {
 	message: string;
 	type: string;
 }
+
+export class Alerta {
+	latitud: number;
+	longitud: number;
+	userid: number;
+}
+

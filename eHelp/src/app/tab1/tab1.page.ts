@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { MySQLService } from '../services/my-sql.service';
 import { StorageService } from '../services/storage.service';
+import {Message} from '../services/classes';
 
 @Component({
   selector: 'app-tab1',
@@ -11,7 +12,7 @@ import { StorageService } from '../services/storage.service';
 export class Tab1Page {
 
   constructor(
-    private registerSQL: MySQLService,
+    private botonSQL: MySQLService,
     private storageService: StorageService
   ) {}
 
@@ -20,6 +21,8 @@ export class Tab1Page {
       if(!this.storageService.isAuthenticated())
       {
         this.storageService.presentToast("Necesitas iniciar sesión para poder utilizar el botón", "danger");
+      } else {
+        this.botonSQL.mandarAlerta();
       }
   }
 

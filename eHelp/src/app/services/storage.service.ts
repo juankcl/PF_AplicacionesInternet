@@ -69,4 +69,14 @@ export class StorageService {
     toast.present();
   }
 
+  makePos(lat:any, lon:any) {
+    let position = {
+      latitude: lat,
+      longitude: lon,
+      userId: this.getCurrentUser().id
+    };
+    
+    return position;
+  }
+
 }
