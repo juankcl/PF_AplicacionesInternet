@@ -24,6 +24,7 @@ if (isset($postdata) && !empty($postdata)) {
 			$user = [
 				'userId' => $datos['id'],
 				'username' => $datos['username'],
+				'nombre' => $datos['nombre'],
 				'password' => null
 			];
 			$session = [
