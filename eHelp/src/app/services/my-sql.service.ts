@@ -13,7 +13,7 @@ export class MySQLService {
   PHP_API_SERVER = "http://localhost/api";
 
   constructor(
-    private httpClient: HttpClient,
+    public httpClient: HttpClient,
     private storage:StorageService
   ) { }
 
@@ -64,6 +64,14 @@ export class MySQLService {
     var alerta = { latitud: pos.coords.latitude, longitud: pos.coords.longitude, userId: self.storage.getCurrentUser().userId };
 
     console.log(alerta);
+    self.cosa(alerta);
+  }
+
+  cosa(alerta: any) {
+    console.log("Cosa");
+    console.log(alerta);
+
+    console.log(this.PHP_API_SERVER);
     this.httpClient.post(`${this.PHP_API_SERVER}/ion-alerta.php`, alerta);
   }
 
