@@ -36,6 +36,19 @@ body {
 	background-color: #57616b;
 }
 
+.mapa {
+	min-height: 500px;
+}
+
+.botonH {
+	color: white;
+	background-color: red;
+	height: 60px;
+	width: 60px;
+	position: relative;
+	border-radius: 100%;
+}
+
 .logo {
 	display: flex;
 	flex-direction: column;

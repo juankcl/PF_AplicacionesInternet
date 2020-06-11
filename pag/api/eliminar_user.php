@@ -1,4 +1,5 @@
 <?php
+include_once 'conection.php';
 
 //Cerrar sesión
 session_start();
@@ -12,3 +13,5 @@ $sentencia_editar = null;
 
 session_unset();
 session_destroy();
+
+header('Location: ../index.php');

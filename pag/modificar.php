@@ -5,7 +5,10 @@ if($_POST) {
 	include_once './api/actualizar_user.php';
 }
 
+echo $_SESSION['userId'];
+
 if ($_GET) {
+	echo "Hello";
 	include_once './api/conection.php';
 	$sql_unico = 'Select * from usuarios where id=?';
 	$gsent_unico = $pdo->prepare($sql_unico);
