@@ -13,7 +13,7 @@ import { StorageService } from '../services/storage.service';
 })
 export class Tab2Page {
 
-  inicioUser: User = { userId: null, username: null, password: null, email: null };
+  inicioUser: User = { userId: null, username: null, password: null, email: null, nombre: null };
 
   constructor(
     private registerSQL: MySQLService,
