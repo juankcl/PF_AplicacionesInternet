@@ -16,7 +16,7 @@ $sentencia_user->execute(array($usuario_new));
 $resultado = $sentencia_user->fetch();
 
 if ($resultado) {
-    $errorMsg = 'El usuario ya existe, por favor utilice un nombre de usuario diferente';
+    echo 'El usuario ya existe, por favor utilice un nombre de usuario diferente';
 } else {
     // Revisar que las dos contraseñas sean iguales
     if ($pass2_new == $pass_new) {
@@ -28,8 +28,8 @@ if ($resultado) {
 
         $sentencia_agregar_user = null;
         $pdo = null;
-        header('Location: index.php');
+        header('Location: ../index.php');
     } else {
-        $errorMsg = "Las contraseñas no son iguales";
+        echo "Las contraseñas no son iguales";
     }
 }

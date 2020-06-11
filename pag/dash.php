@@ -68,7 +68,7 @@ if ($_GET) {
             <!-- Correo -->
             <div class="form-group">
               <label name="correo">Direccion de Correo</label>
-              <input name="correo" class="form-control" placeholder="Ingresa correo">
+              <input name="email" class="form-control" placeholder="Ingresa correo">
             </div>
             <!-- Contraseña -->
             <div class="form-group">
