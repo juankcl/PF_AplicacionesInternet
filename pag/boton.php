@@ -25,8 +25,17 @@ session_start();
 		Username: <?php echo $_SESSION['username']?>
 		<br>
 		UserId: <?php echo $_SESSION['userId']?>
-		<button id="mostMapa">Mostrar Mapa</button>
-		<div id="mapa"></div>
+
+		<form action="api/subirLocal.php" method="post" onsubmit="return Ubicacion()" name="ubicacion">
+			<input type="hidden" name="lat" id="">
+			<input type="hidden" name="long" id="">
+			
+			<div id="ContenedorPrimario">
+				<button type="submit" id="ObtUbicacion">HELP</button>
+				<div id="mapa"></div>
+			</div>
+		</form>
+		
 		<form action="api/logout.php" method="post">
 			<button type="submit">Cerrar sesión</button>
 		</form>

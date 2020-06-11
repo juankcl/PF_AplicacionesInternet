@@ -1,7 +1,7 @@
 $(document).ready(function ()
 {
     //Click al boton para pedir permisos
-    $("#pedirvan").click(Ubicacion);
+    $("#ObtUbicacion").click(Ubicacion);
     $("#mostMapa").click(Mapa);
 });
 
@@ -16,10 +16,9 @@ function Ubicacion()
                 //Si el navegador entrega los datos de geolocalizacion los imprimimos
                 function (position)
                 {
-                    window.alert("Latitud: " + position.coords.latitude);
-                    window.alert("Longitud: " + position.coords.longitude);
-
-                    //Aqui va el procedimiento para mandar a la base de datos
+                    var form = document.forms["ubicacion"];
+                    form['lat'].value = position.coords.latitude;
+                    form['long'].value = position.coords.longitude;
                 },
                 //Si no los entrega manda un alerta de error
                 function ()
