@@ -5,11 +5,10 @@
       <ion-icon name="alert-circle"></ion-icon>
       <ion-label>Botón de Ayuda</ion-label>
     </ion-tab-button>
-
-    <ion-tab-button tab="tab2">
+    <ion-tab-button tab="{{tab}}" (click)="onClick()">
       <ion-icon name="person-circle"></ion-icon>
       <ion-label>Mi perfil</ion-label>
-    </ion-tab-button>
+    </ion-tab-button>    
   </ion-tab-bar>
 
 </ion-tabs>
