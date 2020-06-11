@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+include_once 'api/get_alertas.php';
+
 ?>
 
 
@@ -24,7 +27,7 @@ session_start();
 </head>
 
 <body class="bg-dark">
-	<div class="main">
+	<div class="main2">
 		<div class="tarjeta2 p-4">
 			<div class="row">
 				<br>
@@ -54,6 +57,27 @@ session_start();
 				<a href="modificar.php">Modificar</a>
 				<a href="eliminar.html">Eliminar cuenta</a>
 			</div>
+		</div>
+		<div class="tarjeta2 p-4 mt-4">
+			<?php foreach ($resultado_unico as $alerta) : ?>
+				<?php
+				echo "<script type='text/javascript'>
+					Mapa();
+				</script>";
+				?>
+				<div class="row">
+					<div class="col" id="mapa">
+
+					</div>
+					<div class="col">
+						<?php echo $alerta['fecha'] ?>
+						<br>
+						<?php echo $alerta['latitud'] ?>
+						<br>
+						<?php echo $alerta['longitud'] ?>
+					</div>
+				</div>
+			<?php endforeach ?>
 		</div>
 	</div>
 </body>

@@ -13,6 +13,14 @@ body {
 	align-items: center;
 	height: 100%;
 }
+.main2 {
+	display: flex;
+	flex-flow: column;
+	padding: 5em;
+	justify-content: center;
+	justify-self: center;
+	align-items: center;
+}
 
 .tarjeta {
 	justify-self: center;

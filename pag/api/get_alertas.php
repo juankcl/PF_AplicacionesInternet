@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 include_once 'conection.php';
 
 
