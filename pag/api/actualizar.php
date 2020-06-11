@@ -13,7 +13,7 @@ $sentencia_revisar->execute(array($user,$Id));
 $resultado = $sentencia_revisar->fetch();
 
 if (!$resultado) {
-	$sql_editar = 'Update usuarios set username=?,password=?,nombre=?,email=? where id=?';
+	$sql_editar = 'Update usuarios set username=?,nombre=?,email=? where id=?';
 	$sentencia_editar = $pdo->prepare($sql_editar);
 	$sentencia_editar->execute(array($user, $pass, $nombre, $correo, $Id));
 	
