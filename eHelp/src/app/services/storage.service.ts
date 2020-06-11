@@ -47,7 +47,11 @@ export class StorageService {
 
   isAuthenticated(): boolean {
     var session: Session = this.getCurrentSession();
-    return (session.valid != null) ? true : false;
+    if (session != null)
+    {
+      return session.valid;
+    }
+    return false;
   };
 
   logout(): void {
