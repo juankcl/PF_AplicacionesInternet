@@ -61,12 +61,16 @@ include_once 'api/get_alertas.php';
 		<div class="tarjeta2 p-4 mt-4">
 			<?php foreach ($resultado_unico as $alerta) : ?>
 				<?php
-				echo "<script type='text/javascript'>
-					Mapa();
-				</script>";
+				echo "<script> Mapa2(";
+				echo	(string)$alerta['id'];
+				echo	",";
+				echo 	(string)$alerta['latitud'];
+				echo	",";
+				echo	(string)$alerta['longitud'];
+				echo 	");</script>";
 				?>
 				<div class="row">
-					<div class="col" id="mapa">
+					<div class="col" id="<?php echo $alerta['id']?>">
 
 					</div>
 					<div class="col">
